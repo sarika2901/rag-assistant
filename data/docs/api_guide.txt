@@ -1,0 +1,13 @@
+Payments API Guide
+
+Authentication
+All requests must include an API key in the X-API-Key header. Keys are created in the developer dashboard and expire after 90 days.
+
+Rate Limits
+The API allows 100 requests per minute per key. When the limit is exceeded, the API returns HTTP 429 with the error code ERR_RATE_LIMIT_4291. Clients should wait for the number of seconds in the Retry-After header before retrying.
+
+Error Codes
+ERR_AUTH_1001: Missing or invalid API key.
+ERR_VALID_2203: Request body failed validation.
+ERR_RATE_LIMIT_4291: Too many requests.
+ERR_SERVER_5000: Internal server error. Retry with exponential backoff.
